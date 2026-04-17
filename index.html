@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HC COMSYS Říčany</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/img/HC_Ricany_logo.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ NAVBAR ═══ -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-emblem">
+      <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="48" stroke="#2abfbf" stroke-width="3" fill="#1c1c1c"/>
+        <text x="50" y="66" text-anchor="middle" font-family="'Bebas Neue',sans-serif" font-size="38" fill="#2abfbf">HC</text>
+      </svg>
+    </div>
+    <div>
+      <div class="nav-logo-text">HC COM-SYS <span>Říčany</span></div>
+    </div>
+  </a>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#news" data-cs="Novinky" data-en="News">Novinky</a></li>
+    <li><a href="#teams" data-cs="Týmy" data-en="Teams">Týmy</a></li>
+    <li><a href="#gallery" data-cs="Galerie" data-en="Gallery">Galerie</a></li>
+    <li><a href="#contact" data-cs="Kontakt" data-en="Contact">Kontakt</a></li>
+    <li><a href="https://comsysicearena.cz/" target="_blank" rel="noopener" data-cs="Rezervace ledu" data-en="Ice Booking" style="color:var(--teal);">Rezervace ledu ↗</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('cs')">CZ</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="#" class="nav-admin-btn" onclick="openAdmin(event)">
+      <span data-cs="Admin" data-en="Admin">Admin</span>
+    </a>
+    <div class="hamburger" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════ HERO ══════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-number">16</div>
+  <div class="container hero-content">
+    <p class="hero-eyebrow fade-in fade-in-1">
+      <span data-cs="Hokejový klub • Říčany • od 1948" data-en="Ice Hockey Club • Říčany • since 1948">Hokejový klub • Říčany • od 1948</span>
+    </p>
+    <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;" class="fade-in fade-in-2">
+      <img src="assets/img/HC_Ricany_logo.png" alt="HC COM-SYS Říčany logo"
+           style="width:clamp(140px,18vw,220px);height:clamp(140px,18vw,220px);object-fit:contain;filter:drop-shadow(0 0 32px rgba(42,191,191,0.25));flex-shrink:0;">
+      <h1>
+        <span data-cs="HRÁVÁME" data-en="WE PLAY">HRÁVÁME</span>
+        <em>NAPLNO.</em>
+      </h1>
+    </div>
+    <p class="hero-sub fade-in fade-in-3" data-cs="Vítejte v rodině HC COMSYS Říčany. Hokej, který baví, vychovává a spojuje komunitu." data-en="Welcome to the HC COMSYS Říčany family. Hockey that excites, develops talent, and connects the community.">
+      Vítejte v rodině HC COMSYS Říčany. Hokej, který baví, vychovává a spojuje komunitu.
+    </p>
+    <div class="hero-ctas fade-in fade-in-3">
+      <a href="#news" class="btn btn-primary" data-cs="Nejnovější zprávy" data-en="Latest News">Nejnovější zprávy</a>
+      <a href="#contact" class="btn btn-outline" data-cs="Kontaktujte nás" data-en="Contact Us">Kontaktujte nás</a>
+    </div>
+    <div class="hero-stats fade-in fade-in-4">
+      <div>
+        <div class="hero-stat-num">7</div>
+        <div class="hero-stat-label" data-cs="Týmů & kategorií" data-en="Teams & categories">Týmů & kategorií</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">75+</div>
+        <div class="hero-stat-label" data-cs="Let tradice" data-en="Years of tradition">Let tradice</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">200+</div>
+        <div class="hero-stat-label" data-cs="Aktivních hráčů" data-en="Active players">Aktivních hráčů</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ TICKER ════ -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item">🏒 HC COMSYS Říčany <span class="ticker-sep">·</span></span>
+    <span class="ticker-item" data-cs="Přihlaste se k odběru novinek níže" data-en="Sign up for our newsletter below">Přihlaste se k odběru novinek níže <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">🏆 Sezona 2024/25 <span class="ticker-sep">·</span></span>
+    <span class="ticker-item" data-cs="Sledujte naše sociální sítě" data-en="Follow our social media">Sledujte naše sociální sítě <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">🏒 HC COMSYS Říčany <span class="ticker-sep">·</span></span>
+    <span class="ticker-item" data-cs="Přihlaste se k odběru novinek níže" data-en="Sign up for our newsletter below">Přihlaste se k odběru novinek níže <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">🏆 Sezona 2024/25 <span class="ticker-sep">·</span></span>
+    <span class="ticker-item" data-cs="Sledujte naše sociální sítě" data-en="Follow our social media">Sledujte naše sociální sítě <span class="ticker-sep">·</span></span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ NEWS ═════ -->
+<section class="section" id="news">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="tag" data-cs="Novinky" data-en="News">Novinky</div>
+        <h2 data-cs="Co se děje" data-en="What's happening">Co se děje</h2>
+      </div>
+      <a href="#" class="btn btn-outline" data-cs="Všechny články" data-en="All articles">Všechny články</a>
+    </div>
+
+    <div class="news-grid" id="news-grid">
+      <div class="news-card featured">
+        <div class="news-date" data-cs="15. dubna 2025 · Zápas" data-en="April 15, 2025 · Match">15. dubna 2025 · Zápas</div>
+        <h3 data-cs="Vítězné tažení pokračuje — tři výhry v řadě!" data-en="Winning streak continues — three wins in a row!">Vítězné tažení pokračuje — tři výhry v řadě!</h3>
+        <p data-cs="Naši muži podali skvělý výkon v posledním kole. Výsledek 5:2 potvrdil dobrou formu celého týmu a přiblížil nás play-off. Gratulujeme klukům za skvělý výkon." data-en="Our men put in a brilliant performance in the last round. The 5:2 result confirmed the good form of the whole team and brought us closer to the playoffs. Congratulations to the guys for an excellent performance.">Naši muži podali skvělý výkon v posledním kole. Výsledek 5:2 potvrdil dobrou formu celého týmu a přiblížil nás play-off. Gratulujeme klukům za skvělý výkon.</p>
+        <div class="news-card-arrow"><span data-cs="Číst více" data-en="Read more">Číst více</span> →</div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date" data-cs="10. dubna 2025 · Mládež" data-en="April 10, 2025 · Youth">10. dubna 2025 · Mládež</div>
+        <h3 data-cs="Dorost slaví postup do semifinále" data-en="Juniors celebrate semi-final promotion">Dorost slaví postup do semifinále</h3>
+        <p data-cs="Naše dorostenecká kategorie se probojovala do semifinále krajského přeboru. Výborná zpráva pro celý klub!" data-en="Our junior category has fought through to the semi-final of the regional championship. Excellent news for the whole club!">Naše dorostenecká kategorie se probojovala do semifinále krajského přeboru.</p>
+        <div class="news-card-arrow"><span data-cs="Číst více" data-en="Read more">Číst více</span> →</div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date" data-cs="5. dubna 2025 · Klub" data-en="April 5, 2025 · Club">5. dubna 2025 · Klub</div>
+        <h3 data-cs="Otevírací dny přihlášek na novou sezonu" data-en="Registration open days for new season">Otevírací dny přihlášek na novou sezonu</h3>
+        <p data-cs="Přihlášky na sezonu 2025/26 jsou otevřeny pro všechny věkové kategorie od 5 let." data-en="Registrations for the 2025/26 season are open for all age categories from 5 years old.">Přihlášky na sezonu 2025/26 jsou otevřeny pro všechny věkové kategorie od 5 let.</p>
+        <div class="news-card-arrow"><span data-cs="Číst více" data-en="Read more">Číst více</span> →</div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date" data-cs="1. dubna 2025 · Trénink" data-en="April 1, 2025 · Training">1. dubna 2025 · Trénink</div>
+        <h3 data-cs="Nový kondicionér posiluje tým" data-en="New fitness coach strengthens the team">Nový kondicionér posiluje tým</h3>
+        <p data-cs="Do realizačního týmu přichází zkušený kondicionér Jan Novák, který pracoval s prvoligovými celky." data-en="Experienced fitness coach Jan Novák joins the coaching staff, having worked with top-flight clubs.">Do realizačního týmu přichází zkušený kondicionér Jan Novák.</p>
+        <div class="news-card-arrow"><span data-cs="Číst více" data-en="Read more">Číst více</span> →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ TEAMS ════ -->
+<section class="section teams-section" id="teams">
+  <div class="container">
+    <div class="tag" data-cs="Naše týmy" data-en="Our teams">Naše týmy</div>
+    <h2 data-cs="Kategorie" data-en="Categories">Kategorie</h2>
+    <div class="teams-grid">
+      <div class="team-card">
+        <div class="team-icon">🏒</div>
+        <div class="team-name" data-cs="MUŽI" data-en="MEN">MUŽI</div>
+        <div class="team-desc" data-cs="Krajský přebor" data-en="Regional championship">Krajský přebor</div>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">🥅</div>
+        <div class="team-name" data-cs="ŽENY" data-en="WOMEN">ŽENY</div>
+        <div class="team-desc" data-cs="Ženská liga" data-en="Women's league">Ženská liga</div>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">⭐</div>
+        <div class="team-name" data-cs="DOROST" data-en="JUNIORS">DOROST</div>
+        <div class="team-desc" data-cs="U18 · Krajský přebor" data-en="U18 · Regional championship">U18 · Krajský přebor</div>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">🌟</div>
+        <div class="team-name" data-cs="ŽÁCI" data-en="CADETS">ŽÁCI</div>
+        <div class="team-desc" data-cs="U14 · Přebor středočeského kraje" data-en="U14 · Central Bohemia championship">U14</div>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">✨</div>
+        <div class="team-name" data-cs="MLADŠÍ ŽÁCI" data-en="YOUNG CADETS">MLADŠÍ ŽÁCI</div>
+        <div class="team-desc" data-cs="U12" data-en="U12">U12</div>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">🎯</div>
+        <div class="team-name" data-cs="PŘÍPRAVKA" data-en="PREP">PŘÍPRAVKA</div>
+        <div class="team-desc" data-cs="U8 · U10" data-en="U8 · U10">U8 · U10</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ GALLERY ══ -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="tag" data-cs="Fotogalerie" data-en="Photo gallery">Fotogalerie</div>
+        <h2 data-cs="Momenty" data-en="Moments">Momenty</h2>
+      </div>
+      <a href="#" class="btn btn-outline" data-cs="Celá galerie" data-en="Full gallery">Celá galerie</a>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-placeholder">🏒</div>
+        <div class="gallery-overlay">🔍</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">🥅</div>
+        <div class="gallery-overlay">🔍</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">🏆</div>
+        <div class="gallery-overlay">🔍</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">⛸️</div>
+        <div class="gallery-overlay">🔍</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">🎽</div>
+        <div class="gallery-overlay">🔍</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ NEWSLETTER ══ -->
+<section class="newsletter-section" id="contact">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div>
+        <div class="tag" style="border-color:rgba(0,0,0,0.3);color:rgba(0,0,0,0.6);" data-cs="Newsletter" data-en="Newsletter">Newsletter</div>
+        <h2 data-cs="Zůstaňte v obraze" data-en="Stay informed">Zůstaňte v obraze</h2>
+        <p data-cs="Přihlaste se k odběru novinek a jako první se dozvíte o výsledcích, zápasech a akcích klubu." data-en="Subscribe to our newsletter and be the first to know about results, matches, and club events.">Přihlaste se k odběru novinek a jako první se dozvíte o výsledcích, zápasech a akcích klubu.</p>
+      </div>
+      <div>
+        <form class="newsletter-form" id="newsletter-form" onsubmit="handleNewsletter(event)">
+          <div class="form-row">
+            <input type="text" class="form-input" id="nl-name" placeholder="Jméno / Name" required>
+            <input type="email" class="form-input" id="nl-email" placeholder="E-mail" required>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="nl-gdpr" required>
+            <label for="nl-gdpr" data-cs="Souhlasím se zpracováním osobních údajů pro účely zasílání newsletteru. Odhlásit se lze kdykoliv." data-en="I consent to the processing of personal data for the purpose of sending newsletters. You can unsubscribe at any time.">
+              Souhlasím se zpracováním osobních údajů pro účely zasílání newsletteru. Odhlásit se lze kdykoliv.
+            </label>
+          </div>
+          <button type="submit" class="btn-dark" data-cs="Přihlásit se k odběru" data-en="Subscribe">Přihlásit se k odběru</button>
+          <div class="form-success" id="nl-success" data-cs="✓ Děkujeme! Přihlášení proběhlo úspěšně. Zkontrolujte svůj e-mail." data-en="✓ Thank you! You have successfully subscribed. Please check your email.">✓ Děkujeme! Přihlášení proběhlo úspěšně. Zkontrolujte svůj e-mail.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SPONSORS ══ -->
+<section class="sponsors-section">
+  <div class="container">
+    <p class="sponsors-label" data-cs="Naši partneři & sponzoři" data-en="Our partners & sponsors">Naši partneři & sponzoři</p>
+    <div class="sponsors-grid">
+      <div class="sponsor-item main">COM·SYS</div>
+      <div class="sponsor-item">PARTNER</div>
+      <div class="sponsor-item">SPONZOR</div>
+      <div class="sponsor-item">PARTNER</div>
+      <div class="sponsor-item">SPONZOR</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ FOOTER ════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="font-family:var(--font-display);font-size:2rem;color:var(--teal);">HC COMSYS ŘÍČANY</div>
+        <p data-cs="Hokejový klub s tradicí od roku 1948. Hrdí na naše hráče, trenéry a fanoušky." data-en="Ice hockey club with a tradition dating back to 1948. Proud of our players, coaches, and fans.">Hokejový klub s tradicí od roku 1948. Hrdí na naše hráče, trenéry a fanoušky.</p>
+        <div class="social-links" style="margin-top:20px;">
+          <a href="#" class="social-link" title="Facebook">f</a>
+          <a href="#" class="social-link" title="Instagram">ig</a>
+          <a href="#" class="social-link" title="YouTube">yt</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading" data-cs="Navigace" data-en="Navigation">Navigace</div>
+        <ul class="footer-links">
+          <li><a href="#news" data-cs="Novinky" data-en="News">Novinky</a></li>
+          <li><a href="#teams" data-cs="Týmy" data-en="Teams">Týmy</a></li>
+          <li><a href="#gallery" data-cs="Galerie" data-en="Gallery">Galerie</a></li>
+          <li><a href="#contact" data-cs="Kontakt" data-en="Contact">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading" data-cs="Klub" data-en="Club">Klub</div>
+        <ul class="footer-links">
+          <li><a href="#" data-cs="Historie" data-en="History">Historie</a></li>
+          <li><a href="#" data-cs="Vedení klubu" data-en="Club management">Vedení klubu</a></li>
+          <li><a href="#" data-cs="Trenéři" data-en="Coaches">Trenéři</a></li>
+          <li><a href="#" data-cs="Sponzoři" data-en="Sponsors">Sponzoři</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading" data-cs="Kontakt" data-en="Contact">Kontakt</div>
+        <ul class="footer-links">
+          <li><a href="mailto:info@hcricany.cz">info@hcricany.cz</a></li>
+          <li><a href="tel:+420000000000">+420 000 000 000</a></li>
+          <li><a href="#" data-cs="Zimní stadion Říčany" data-en="Ice Arena Říčany">Zimní stadion Říčany</a></li>
+          <li><a href="#" data-cs="GDPR & Soukromí" data-en="GDPR & Privacy">GDPR & Soukromí</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-cs="© 2025 HC COMSYS Říčany. Všechna práva vyhrazena." data-en="© 2025 HC COMSYS Říčany. All rights reserved.">© 2025 HC COMSYS Říčany. Všechna práva vyhrazena.</p>
+      <p data-cs="Navrženo s ❤️ pro hokej" data-en="Designed with ❤️ for hockey">Navrženo s ❤️ pro hokej</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════ LOGIN MODAL ══ -->
+<div class="modal-backdrop" id="login-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" data-cs="ADMIN" data-en="ADMIN">ADMIN</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-tabs">
+        <button class="modal-tab active" onclick="switchTab('login')" data-cs="Přihlásit se" data-en="Sign in">Přihlásit se</button>
+        <button class="modal-tab" onclick="switchTab('forgot')" data-cs="Zapomenuté heslo" data-en="Forgot password">Zapomenuté heslo</button>
+      </div>
+
+      <div class="tab-content active" id="tab-login">
+        <form onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label class="form-label" data-cs="E-mail" data-en="E-mail">E-mail</label>
+            <input type="email" class="form-control" id="login-email" placeholder="admin@hcricany.cz" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-cs="Heslo" data-en="Password">Heslo</label>
+            <input type="password" class="form-control" id="login-password" placeholder="••••••••" required>
+            <div class="form-error" id="login-error" data-cs="Nesprávné přihlašovací údaje." data-en="Incorrect login credentials.">Nesprávné přihlašovací údaje.</div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:8px;" data-cs="Přihlásit se" data-en="Sign in">Přihlásit se</button>
+        </form>
+        <p style="font-size:0.75rem;color:var(--gray-light);margin-top:16px;text-align:center;" data-cs="Demo: admin@hcricany.cz / heslo123" data-en="Demo: admin@hcricany.cz / heslo123">Demo: admin@hcricany.cz / heslo123</p>
+      </div>
+
+      <div class="tab-content" id="tab-forgot">
+        <form onsubmit="handleForgot(event)">
+          <div class="form-group">
+            <label class="form-label" data-cs="Váš e-mail" data-en="Your e-mail">Váš e-mail</label>
+            <input type="email" class="form-control" placeholder="vas@email.cz" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:8px;" data-cs="Odeslat reset" data-en="Send reset">Odeslat reset</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ ADMIN PANEL ══ -->
+<div class="admin-panel" id="admin-panel">
+  <div class="admin-nav">
+    <div class="admin-nav-left">
+      <div class="admin-logo">HC ŘÍČANY</div>
+      <div class="admin-badge" data-cs="Administrace" data-en="Administration">Administrace</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <span style="font-size:0.8rem;color:var(--gray-light);">
+        <span style="color:var(--teal);">●</span>
+        <span id="admin-user-label" data-cs="Přihlášen jako admin" data-en="Logged in as admin"> Přihlášen jako admin</span>
+      </span>
+      <button class="admin-close-btn" onclick="closeAdmin()" data-cs="Zpět na web" data-en="Back to website">Zpět na web</button>
+    </div>
+  </div>
+
+  <div class="admin-layout">
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-section">
+        <div class="admin-sidebar-heading" data-cs="Přehled" data-en="Overview">Přehled</div>
+        <div class="admin-nav-item active" onclick="showAdminSection('dashboard')">
+          <span class="icon">📊</span>
+          <span data-cs="Dashboard" data-en="Dashboard">Dashboard</span>
+        </div>
+      </div>
+      <div class="admin-sidebar-section">
+        <div class="admin-sidebar-heading" data-cs="Obsah" data-en="Content">Obsah</div>
+        <div class="admin-nav-item" onclick="showAdminSection('articles')">
+          <span class="icon">📝</span>
+          <span data-cs="Články & novinky" data-en="Articles & news">Články & novinky</span>
+        </div>
+        <div class="admin-nav-item" onclick="showAdminSection('photos')">
+          <span class="icon">🖼️</span>
+          <span data-cs="Fotografie" data-en="Photos">Fotografie</span>
+        </div>
+        <div class="admin-nav-item" onclick="showAdminSection('new-article')">
+          <span class="icon">✏️</span>
+          <span data-cs="Nový článek" data-en="New article">Nový článek</span>
+        </div>
+      </div>
+      <div class="admin-sidebar-section">
+        <div class="admin-sidebar-heading" data-cs="Správa" data-en="Management">Správa</div>
+        <div class="admin-nav-item" onclick="showAdminSection('users')">
+          <span class="icon">👥</span>
+          <span data-cs="Uživatelé & přístupy" data-en="Users & access">Uživatelé & přístupy</span>
+        </div>
+        <div class="admin-nav-item" onclick="showAdminSection('newsletter')">
+          <span class="icon">📧</span>
+          <span data-cs="Newsletter odběratelé" data-en="Newsletter subscribers">Newsletter odběratelé</span>
+        </div>
+      </div>
+      <div class="admin-sidebar-section">
+        <div class="admin-sidebar-heading" data-cs="Nastavení" data-en="Settings">Nastavení</div>
+        <div class="admin-nav-item" onclick="showAdminSection('settings')">
+          <span class="icon">⚙️</span>
+          <span data-cs="Nastavení webu" data-en="Website settings">Nastavení webu</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-content">
+
+      <!-- DASHBOARD -->
+      <div class="admin-panel-section active" id="section-dashboard">
+        <div class="admin-page-title" data-cs="Dashboard" data-en="Dashboard">Dashboard</div>
+        <div class="admin-page-subtitle" data-cs="Přehled aktivit a statistik webu." data-en="Overview of website activity and statistics.">Přehled aktivit a statistik webu.</div>
+        <div class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <div class="admin-stat-num">12</div>
+            <div class="admin-stat-label" data-cs="Publikovaných článků" data-en="Published articles">Publikovaných článků</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-num">47</div>
+            <div class="admin-stat-label" data-cs="Newsletter odběratelů" data-en="Newsletter subscribers">Newsletter odběratelů</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-num">5</div>
+            <div class="admin-stat-label" data-cs="Uživatelů systému" data-en="System users">Uživatelů systému</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-num">38</div>
+            <div class="admin-stat-label" data-cs="Fotografií v galerii" data-en="Photos in gallery">Fotografií v galerii</div>
+          </div>
+        </div>
+
+        <div class="admin-table-wrap">
+          <div class="admin-table-header">
+            <div class="admin-table-title" data-cs="Poslední aktivita" data-en="Recent activity">Poslední aktivita</div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th data-cs="Akce" data-en="Action">Akce</th>
+                <th data-cs="Uživatel" data-en="User">Uživatel</th>
+                <th data-cs="Čas" data-en="Time">Čas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td data-cs="Přidán nový článek: Vítězné tažení pokračuje" data-en="New article added: Winning streak continues">Přidán nový článek: Vítězné tažení pokračuje</td><td>admin</td><td data-cs="Dnes 14:32" data-en="Today 14:32">Dnes 14:32</td></tr>
+              <tr><td data-cs="Nový odběratel newsletteru" data-en="New newsletter subscriber">Nový odběratel newsletteru</td><td>systém</td><td data-cs="Dnes 11:15" data-en="Today 11:15">Dnes 11:15</td></tr>
+              <tr><td data-cs="Nahrány 3 fotografie do galerie" data-en="3 photos uploaded to gallery">Nahrány 3 fotografie do galerie</td><td>redaktor</td><td data-cs="Včera 18:05" data-en="Yesterday 18:05">Včera 18:05</td></tr>
+              <tr><td data-cs="Přidán nový uživatel: jan.novak@..." data-en="New user added: jan.novak@...">Přidán nový uživatel: jan.novak@...</td><td>admin</td><td data-cs="Před 2 dny" data-en="2 days ago">Před 2 dny</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ARTICLES -->
+      <div class="admin-panel-section" id="section-articles">
+        <div class="admin-page-title" data-cs="Články & novinky" data-en="Articles & news">Články & novinky</div>
+        <div class="admin-page-subtitle" data-cs="Správa publikovaných článků a novinek." data-en="Manage published articles and news.">Správa publikovaných článků a novinek.</div>
+        <div class="admin-table-wrap">
+          <div class="admin-table-header">
+            <div class="admin-table-title" data-cs="Všechny články" data-en="All articles">Všechny články</div>
+            <button class="btn btn-primary" onclick="showAdminSection('new-article')" style="font-size:0.78rem;padding:10px 20px;" data-cs="+ Nový článek" data-en="+ New article">+ Nový článek</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th data-cs="Název" data-en="Title">Název</th>
+                <th data-cs="Kategorie" data-en="Category">Kategorie</th>
+                <th data-cs="Autor" data-en="Author">Autor</th>
+                <th data-cs="Datum" data-en="Date">Datum</th>
+                <th data-cs="Stav" data-en="Status">Stav</th>
+                <th data-cs="Akce" data-en="Actions">Akce</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-cs="Vítězné tažení pokračuje" data-en="Winning streak continues">Vítězné tažení pokračuje</td>
+                <td><span class="role-badge role-admin" data-cs="Zápas" data-en="Match">Zápas</span></td>
+                <td>admin</td>
+                <td>15.4.2025</td>
+                <td><span class="status-active" data-cs="● Publikováno" data-en="● Published">● Publikováno</span></td>
+                <td>
+                  <button class="action-btn" data-cs="Upravit" data-en="Edit">Upravit</button>
+                  <button class="action-btn danger" data-cs="Smazat" data-en="Delete">Smazat</button>
+                </td>
+              </tr>
+              <tr>
+                <td data-cs="Dorost slaví postup do semifinále" data-en="Juniors celebrate semi-final promotion">Dorost slaví postup do semifinále</td>
+                <td><span class="role-badge role-editor" data-cs="Mládež" data-en="Youth">Mládež</span></td>
+                <td>redaktor</td>
+                <td>10.4.2025</td>
+                <td><span class="status-active" data-cs="● Publikováno" data-en="● Published">● Publikováno</span></td>
+                <td>
+                  <button class="action-btn" data-cs="Upravit" data-en="Edit">Upravit</button>
+                  <button class="action-btn danger" data-cs="Smazat" data-en="Delete">Smazat</button>
+                </td>
+              </tr>
+              <tr>
+                <td data-cs="Přihlášky na novou sezonu" data-en="Registrations for new season">Přihlášky na novou sezonu</td>
+                <td><span class="role-badge role-viewer" data-cs="Klub" data-en="Club">Klub</span></td>
+                <td>admin</td>
+                <td>5.4.2025</td>
+                <td><span class="status-inactive" data-cs="○ Koncept" data-en="○ Draft">○ Koncept</span></td>
+                <td>
+                  <button class="action-btn" data-cs="Upravit" data-en="Edit">Upravit</button>
+                  <button class="action-btn danger" data-cs="Smazat" data-en="Delete">Smazat</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- NEW ARTICLE -->
+      <div class="admin-panel-section" id="section-new-article">
+        <div class="admin-page-title" data-cs="Nový článek" data-en="New article">Nový článek</div>
+        <div class="admin-page-subtitle" data-cs="Vytvořte nový příspěvek nebo novinku." data-en="Create a new post or news item.">Vytvořte nový příspěvek nebo novinku.</div>
+        <div class="admin-form-grid">
+          <div>
+            <div class="admin-form-card">
+              <div class="admin-form-section-title" data-cs="Obsah článku" data-en="Article content">Obsah článku</div>
+              <div class="form-group">
+                <label class="form-label" data-cs="Nadpis (česky)" data-en="Title (Czech)">Nadpis (česky)</label>
+                <input type="text" class="form-control" data-cs-placeholder="Název článku v češtině..." data-en-placeholder="Article title in Czech..." placeholder="Název článku v češtině...">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-cs="Nadpis (anglicky)" data-en="Title (English)">Nadpis (anglicky)</label>
+                <input type="text" class="form-control" data-cs-placeholder="Article title in English..." data-en-placeholder="Article title in English..." placeholder="Article title in English...">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-cs="Perex (krátký popis)" data-en="Excerpt (short description)">Perex (krátký popis)</label>
+                <textarea class="form-control" style="min-height:80px;" data-cs-placeholder="Krátký popis článku..." data-en-placeholder="Short article description..." placeholder="Krátký popis článku..."></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-cs="Obsah článku" data-en="Article body">Obsah článku</label>
+                <textarea class="form-control" data-cs-placeholder="Napište obsah článku..." data-en-placeholder="Write article content..." placeholder="Napište obsah článku..."></textarea>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="admin-form-card" style="margin-bottom:20px;">
+              <div class="admin-form-section-title" data-cs="Nastavení publikace" data-en="Publication settings">Nastavení publikace</div>
+              <div class="form-group">
+                <label class="form-label" data-cs="Kategorie" data-en="Category">Kategorie</label>
+                <select class="form-control">
+                  <option data-cs="Zápas" data-en="Match">Zápas</option>
+                  <option data-cs="Mládež" data-en="Youth">Mládež</option>
+                  <option data-cs="Klub" data-en="Club">Klub</option>
+                  <option data-cs="Trénink" data-en="Training">Trénink</option>
+                  <option data-cs="Akce" data-en="Event">Akce</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-cs="Stav" data-en="Status">Stav</label>
+                <select class="form-control">
+                  <option data-cs="Publikováno" data-en="Published">Publikováno</option>
+                  <option data-cs="Koncept" data-en="Draft">Koncept</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-cs="Datum publikace" data-en="Publication date">Datum publikace</label>
+                <input type="date" class="form-control" value="2025-04-17">
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+                  <input type="checkbox" style="accent-color:var(--teal);">
+                  <span data-cs="Zobrazit jako featured (hlavní)" data-en="Show as featured (main)">Zobrazit jako featured (hlavní)</span>
+                </label>
+              </div>
+              <button class="btn btn-primary" style="width:100%;" onclick="showToast()" data-cs="Publikovat článek" data-en="Publish article">Publikovat článek</button>
+              <button class="btn btn-outline" style="width:100%;margin-top:10px;" data-cs="Uložit jako koncept" data-en="Save as draft">Uložit jako koncept</button>
+            </div>
+            <div class="admin-form-card">
+              <div class="admin-form-section-title" data-cs="Fotografie článku" data-en="Article photo">Fotografie článku</div>
+              <div class="photo-upload-area" onclick="alert('V produkční verzi zde bude nahrávání souborů.')">
+                <div class="upload-icon">📷</div>
+                <div class="upload-hint" data-cs="Klikněte pro nahrání fotografie" data-en="Click to upload photo">Klikněte pro nahrání fotografie</div>
+                <div class="upload-hint" style="margin-top:4px;font-size:0.72rem;" data-cs="JPG, PNG, WebP · max 5 MB" data-en="JPG, PNG, WebP · max 5 MB">JPG, PNG, WebP · max 5 MB</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHOTOS -->
+      <div class="admin-panel-section" id="section-photos">
+        <div class="admin-page-title" data-cs="Fotografie" data-en="Photos">Fotografie</div>
+        <div class="admin-page-subtitle" data-cs="Správa fotografií v galerii." data-en="Manage photos in the gallery.">Správa fotografií v galerii.</div>
+        <div class="admin-form-card" style="margin-bottom:24px;">
+          <div class="photo-upload-area" onclick="alert('V produkční verzi zde bude nahrávání souborů.')">
+            <div class="upload-icon">📁</div>
+            <div class="upload-hint" data-cs="Přetáhněte fotografie nebo klikněte pro výběr" data-en="Drag photos here or click to select">Přetáhněte fotografie nebo klikněte pro výběr</div>
+            <div class="upload-hint" style="margin-top:4px;font-size:0.72rem;" data-cs="Více souborů najednou · JPG, PNG, WebP · max 5 MB / foto" data-en="Multiple files at once · JPG, PNG, WebP · max 5 MB / photo">Více souborů najednou · JPG, PNG, WebP · max 5 MB / foto</div>
+          </div>
+        </div>
+        <div class="admin-table-wrap">
+          <div class="admin-table-header">
+            <div class="admin-table-title" data-cs="Nahrané fotografie (38)" data-en="Uploaded photos (38)">Nahrané fotografie (38)</div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th data-cs="Náhled" data-en="Preview">Náhled</th>
+                <th data-cs="Název souboru" data-en="Filename">Název souboru</th>
+                <th data-cs="Kategorie" data-en="Category">Kategorie</th>
+                <th data-cs="Nahráno" data-en="Uploaded">Nahráno</th>
+                <th data-cs="Akce" data-en="Actions">Akce</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div style="width:48px;height:36px;background:var(--gray-mid);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">🏒</div></td>
+                <td>zapas_2025_04_15.jpg</td>
+                <td data-cs="Zápas" data-en="Match">Zápas</td>
+                <td>15.4.2025</td>
+                <td><button class="action-btn danger" data-cs="Smazat" data-en="Delete">Smazat</button></td>
+              </tr>
+              <tr>
+                <td><div style="width:48px;height:36px;background:var(--gray-mid);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">🥅</div></td>
+                <td>trening_2025_04_12.jpg</td>
+                <td data-cs="Trénink" data-en="Training">Trénink</td>
+                <td>12.4.2025</td>
+                <td><button class="action-btn danger" data-cs="Smazat" data-en="Delete">Smazat</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- USERS -->
+      <div class="admin-panel-section" id="section-users">
+        <div class="admin-page-title" data-cs="Uživatelé & přístupy" data-en="Users & access">Uživatelé & přístupy</div>
+        <div class="admin-page-subtitle" data-cs="Správa uživatelských účtů a oprávnění." data-en="Manage user accounts and permissions.">Správa uživatelských účtů a oprávnění.</div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px;">
+          <div class="admin-form-card">
+            <div style="color:var(--teal);font-family:var(--font-cond);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;" data-cs="Role: Admin" data-en="Role: Admin">Role: Admin</div>
+            <p style="font-size:0.82rem;color:var(--gray-light);" data-cs="Plný přístup ke všem sekcím. Správa uživatelů, nastavení webu, publikování obsahu." data-en="Full access to all sections. User management, website settings, content publishing.">Plný přístup ke všem sekcím. Správa uživatelů, nastavení webu, publikování obsahu.</p>
+          </div>
+          <div class="admin-form-card">
+            <div style="color:orange;font-family:var(--font-cond);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;" data-cs="Role: Editor" data-en="Role: Editor">Role: Editor</div>
+            <p style="font-size:0.82rem;color:var(--gray-light);" data-cs="Přidávání a editace článků, nahrávání fotografií. Bez přístupu ke správě uživatelů." data-en="Adding and editing articles, uploading photos. No access to user management.">Přidávání a editace článků, nahrávání fotografií. Bez přístupu ke správě uživatelů.</p>
+          </div>
+          <div class="admin-form-card">
+            <div style="color:var(--gray-light);font-family:var(--font-cond);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;" data-cs="Role: Viewer" data-en="Role: Viewer">Role: Viewer</div>
+            <p style="font-size:0.82rem;color:var(--gray-light);" data-cs="Pouze přehled statistik a zobrazení obsahu. Bez práva editace." data-en="Statistics overview and content viewing only. No editing rights.">Pouze přehled statistik a zobrazení obsahu. Bez práva editace.</p>
+          </div>
+        </div>
+
+        <div class="admin-table-wrap">
+          <div class="admin-table-header">
+            <div class="admin-table-title" data-cs="Systémoví uživatelé" data-en="System users">Systémoví uživatelé</div>
+            <button class="btn btn-primary" onclick="showAddUserModal()" style="font-size:0.78rem;padding:10px 20px;" data-cs="+ Přidat uživatele" data-en="+ Add user">+ Přidat uživatele</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th data-cs="Jméno" data-en="Name">Jméno</th>
+                <th>E-mail</th>
+                <th data-cs="Role" data-en="Role">Role</th>
+                <th data-cs="Stav" data-en="Status">Stav</th>
+                <th data-cs="Poslední přihlášení" data-en="Last login">Poslední přihlášení</th>
+                <th data-cs="Akce" data-en="Actions">Akce</th>
+              </tr>
+            </thead>
+            <tbody id="users-table">
+              <tr>
+                <td>Jan Administrátor</td>
+                <td>admin@hcricany.cz</td>
+                <td><span class="role-badge role-admin">Admin</span></td>
+                <td><span class="status-active" data-cs="● Aktivní" data-en="● Active">● Aktivní</span></td>
+                <td data-cs="Dnes" data-en="Today">Dnes</td>
+                <td>
+                  <button class="action-btn" data-cs="Upravit" data-en="Edit">Upravit</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Petra Redaktorová</td>
+                <td>redaktor@hcricany.cz</td>
+                <td><span class="role-badge role-editor">Editor</span></td>
+                <td><span class="status-active" data-cs="● Aktivní" data-en="● Active">● Aktivní</span></td>
+                <td data-cs="Včera" data-en="Yesterday">Včera</td>
+                <td>
+                  <button class="action-btn" data-cs="Upravit" data-en="Edit">Upravit</button>
+                  <button class="action-btn danger" data-cs="Zrušit" data-en="Revoke">Zrušit</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Tomáš Trenér</td>
+                <td>trener@hcricany.cz</td>
+                <td><span class="role-badge role-viewer">Viewer</span></td>
+                <td><span class="status-inactive" data-cs="○ Neaktivní" data-en="○ Inactive">○ Neaktivní</span></td>
+                <td>10.4.2025</td>
+                <td>
+                  <button class="action-btn" data-cs="Upravit" data-en="Edit">Upravit</button>
+                  <button class="action-btn danger" data-cs="Zrušit" data-en="Revoke">Zrušit</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- NEWSLETTER SUBSCRIBERS -->
+      <div class="admin-panel-section" id="section-newsletter">
+        <div class="admin-page-title" data-cs="Newsletter odběratelé" data-en="Newsletter subscribers">Newsletter odběratelé</div>
+        <div class="admin-page-subtitle" data-cs="Přehled přihlášených odběratelů." data-en="Overview of subscribed users.">Přehled přihlášených odběratelů.</div>
+        <div class="admin-table-wrap">
+          <div class="admin-table-header">
+            <div class="admin-table-title">47 <span data-cs="odběratelů" data-en="subscribers">odběratelů</span></div>
+            <button class="btn btn-outline" style="font-size:0.78rem;padding:10px 20px;" data-cs="Exportovat CSV" data-en="Export CSV">Exportovat CSV</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th data-cs="Jméno" data-en="Name">Jméno</th>
+                <th>E-mail</th>
+                <th data-cs="Přihlášen" data-en="Subscribed">Přihlášen</th>
+                <th data-cs="Jazyk" data-en="Language">Jazyk</th>
+                <th data-cs="Akce" data-en="Actions">Akce</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Alena Novotná</td><td>alena@email.cz</td><td>16.4.2025</td><td>CZ</td><td><button class="action-btn danger" data-cs="Odebrat" data-en="Remove">Odebrat</button></td></tr>
+              <tr><td>Martin Dvořák</td><td>martin.dvorak@email.cz</td><td>15.4.2025</td><td>CZ</td><td><button class="action-btn danger" data-cs="Odebrat" data-en="Remove">Odebrat</button></td></tr>
+              <tr><td>John Smith</td><td>j.smith@email.com</td><td>14.4.2025</td><td>EN</td><td><button class="action-btn danger" data-cs="Odebrat" data-en="Remove">Odebrat</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="admin-panel-section" id="section-settings">
+        <div class="admin-page-title" data-cs="Nastavení webu" data-en="Website settings">Nastavení webu</div>
+        <div class="admin-page-subtitle" data-cs="Základní nastavení a konfigurace." data-en="Basic settings and configuration.">Základní nastavení a konfigurace.</div>
+        <div class="admin-form-grid">
+          <div class="admin-form-card">
+            <div class="admin-form-section-title" data-cs="Informace o klubu" data-en="Club information">Informace o klubu</div>
+            <div class="form-group">
+              <label class="form-label" data-cs="Název klubu" data-en="Club name">Název klubu</label>
+              <input type="text" class="form-control" value="HC COMSYS Říčany">
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-cs="Kontaktní e-mail" data-en="Contact e-mail">Kontaktní e-mail</label>
+              <input type="email" class="form-control" value="info@hcricany.cz">
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-cs="Telefonní číslo" data-en="Phone number">Telefonní číslo</label>
+              <input type="text" class="form-control" value="+420 000 000 000">
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-cs="Adresa stadiónu" data-en="Stadium address">Adresa stadiónu</label>
+              <textarea class="form-control" style="min-height:80px;">Zimní stadion Říčany
+Ke Stadionu 123
+251 01 Říčany</textarea>
+            </div>
+            <button class="btn btn-primary" onclick="showToast()" data-cs="Uložit změny" data-en="Save changes">Uložit změny</button>
+          </div>
+          <div>
+            <div class="admin-form-card" style="margin-bottom:20px;">
+              <div class="admin-form-section-title" data-cs="Sociální sítě" data-en="Social media">Sociální sítě</div>
+              <div class="form-group">
+                <label class="form-label">Facebook URL</label>
+                <input type="url" class="form-control" placeholder="https://facebook.com/hcricany">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Instagram URL</label>
+                <input type="url" class="form-control" placeholder="https://instagram.com/hcricany">
+              </div>
+              <div class="form-group">
+                <label class="form-label">YouTube URL</label>
+                <input type="url" class="form-control" placeholder="https://youtube.com/@hcricany">
+              </div>
+              <button class="btn btn-primary" onclick="showToast()" data-cs="Uložit" data-en="Save">Uložit</button>
+            </div>
+            <div class="admin-form-card">
+              <div class="admin-form-section-title" data-cs="Zabezpečení" data-en="Security">Zabezpečení</div>
+              <div class="form-group">
+                <label class="form-label" data-cs="Změna hesla" data-en="Change password">Změna hesla</label>
+                <input type="password" class="form-control" placeholder="Nové heslo (min 12 znaků)">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" data-cs-placeholder="Potvrdit nové heslo" data-en-placeholder="Confirm new password" placeholder="Potvrdit nové heslo">
+              </div>
+              <button class="btn btn-outline" onclick="showToast()" data-cs="Změnit heslo" data-en="Change password">Změnit heslo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="admin-toast" id="admin-toast" data-cs="✓ Změny byly uloženy" data-en="✓ Changes saved">✓ Změny byly uloženy</div>
+</div>
+
+<!-- ADD USER MODAL -->
+<div class="modal-backdrop" id="add-user-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" data-cs="NOVÝ UŽIVATEL" data-en="NEW USER">NOVÝ UŽIVATEL</div>
+      <button class="modal-close" onclick="document.getElementById('add-user-modal').style.display='none'">✕</button>
+    </div>
+    <div class="modal-body">
+      <form onsubmit="addUser(event)">
+        <div class="form-group">
+          <label class="form-label" data-cs="Jméno a příjmení" data-en="Full name">Jméno a příjmení</label>
+          <input type="text" class="form-control" id="new-user-name" required placeholder="Jan Novák">
+        </div>
+        <div class="form-group">
+          <label class="form-label">E-mail</label>
+          <input type="email" class="form-control" id="new-user-email" required placeholder="jan@hcricany.cz">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-cs="Role" data-en="Role">Role</label>
+          <select class="form-control" id="new-user-role">
+            <option value="Admin">Admin</option>
+            <option value="Editor">Editor</option>
+            <option value="Viewer" selected>Viewer</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-cs="Heslo (dočasné)" data-en="Password (temporary)">Heslo (dočasné)</label>
+          <input type="password" class="form-control" id="new-user-pass" required placeholder="min. 12 znaků">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;margin-top:8px;" data-cs="Vytvořit účet" data-en="Create account">Vytvořit účet</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -147,6 +147,57 @@ function addUser(e) {
   showToast();
 }
 
+// ─── PUBLISH ARTICLE ───────────────────────────────────────
+function publishArticle() {
+  const titleCs = document.getElementById('art-title-cs').value.trim();
+  const titleEn = document.getElementById('art-title-en').value.trim();
+  const excerptCs = document.getElementById('art-excerpt-cs').value.trim();
+  const excerptEn = document.getElementById('art-excerpt-en').value.trim();
+  const category = document.getElementById('art-category').value;
+  const dateVal = document.getElementById('art-date').value;
+  const featured = document.getElementById('art-featured').checked;
+
+  if (!titleCs) {
+    alert(currentLang === 'cs' ? 'Vyplňte prosím nadpis článku (česky).' : 'Please fill in the article title (Czech).');
+    return;
+  }
+
+  const csMonths = ['ledna','února','března','dubna','května','června','července','srpna','září','října','listopadu','prosince'];
+  const enMonths = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const d = dateVal ? new Date(dateVal) : new Date();
+  const dateCs = `${d.getDate()}. ${csMonths[d.getMonth()]} ${d.getFullYear()} · ${category}`;
+  const catEl = document.getElementById('art-category');
+  const categoryEn = catEl.options[catEl.selectedIndex].dataset.en || category;
+  const dateEn = `${enMonths[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()} · ${categoryEn}`;
+
+  const card = document.createElement('div');
+  card.className = 'news-card' + (featured ? ' featured' : '');
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(20px)';
+  card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  card.innerHTML = `
+    <div class="news-date" data-cs="${dateCs}" data-en="${dateEn}">${currentLang === 'cs' ? dateCs : dateEn}</div>
+    <h3 data-cs="${titleCs}" data-en="${titleEn || titleCs}">${currentLang === 'cs' ? titleCs : (titleEn || titleCs)}</h3>
+    <p data-cs="${excerptCs}" data-en="${excerptEn || excerptCs}">${currentLang === 'cs' ? excerptCs : (excerptEn || excerptCs)}</p>
+    <div class="news-card-arrow"><span data-cs="Číst více" data-en="Read more">${currentLang === 'cs' ? 'Číst více' : 'Read more'}</span> →</div>`;
+
+  const grid = document.getElementById('news-grid');
+  if (featured) {
+    grid.insertBefore(card, grid.firstChild);
+  } else {
+    grid.appendChild(card);
+  }
+
+  requestAnimationFrame(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; });
+
+  // Reset form
+  ['art-title-cs','art-title-en','art-excerpt-cs','art-excerpt-en'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('art-featured').checked = false;
+
+  showToast();
+  showAdminSection('articles');
+}
+
 // ─── NEWSLETTER ────────────────────────────────────────────
 function handleNewsletter(e) {
   e.preventDefault();

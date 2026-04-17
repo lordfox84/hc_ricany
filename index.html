@@ -523,19 +523,19 @@
               <div class="admin-form-section-title" data-cs="Obsah článku" data-en="Article content">Obsah článku</div>
               <div class="form-group">
                 <label class="form-label" data-cs="Nadpis (česky)" data-en="Title (Czech)">Nadpis (česky)</label>
-                <input type="text" class="form-control" data-cs-placeholder="Název článku v češtině..." data-en-placeholder="Article title in Czech..." placeholder="Název článku v češtině...">
+                <input type="text" id="art-title-cs" class="form-control" data-cs-placeholder="Název článku v češtině..." data-en-placeholder="Article title in Czech..." placeholder="Název článku v češtině...">
               </div>
               <div class="form-group">
                 <label class="form-label" data-cs="Nadpis (anglicky)" data-en="Title (English)">Nadpis (anglicky)</label>
-                <input type="text" class="form-control" data-cs-placeholder="Article title in English..." data-en-placeholder="Article title in English..." placeholder="Article title in English...">
+                <input type="text" id="art-title-en" class="form-control" data-cs-placeholder="Article title in English..." data-en-placeholder="Article title in English..." placeholder="Article title in English...">
               </div>
               <div class="form-group">
                 <label class="form-label" data-cs="Perex (krátký popis)" data-en="Excerpt (short description)">Perex (krátký popis)</label>
-                <textarea class="form-control" style="min-height:80px;" data-cs-placeholder="Krátký popis článku..." data-en-placeholder="Short article description..." placeholder="Krátký popis článku..."></textarea>
+                <textarea id="art-excerpt-cs" class="form-control" style="min-height:80px;" data-cs-placeholder="Krátký popis článku..." data-en-placeholder="Short article description..." placeholder="Krátký popis článku..."></textarea>
               </div>
               <div class="form-group">
-                <label class="form-label" data-cs="Obsah článku" data-en="Article body">Obsah článku</label>
-                <textarea class="form-control" data-cs-placeholder="Napište obsah článku..." data-en-placeholder="Write article content..." placeholder="Napište obsah článku..."></textarea>
+                <label class="form-label" data-cs="Perex (anglicky)" data-en="Excerpt (English)">Perex (anglicky)</label>
+                <textarea id="art-excerpt-en" class="form-control" style="min-height:80px;" data-cs-placeholder="Short article description..." data-en-placeholder="Short article description..." placeholder="Short article description..."></textarea>
               </div>
             </div>
           </div>
@@ -544,12 +544,12 @@
               <div class="admin-form-section-title" data-cs="Nastavení publikace" data-en="Publication settings">Nastavení publikace</div>
               <div class="form-group">
                 <label class="form-label" data-cs="Kategorie" data-en="Category">Kategorie</label>
-                <select class="form-control">
-                  <option data-cs="Zápas" data-en="Match">Zápas</option>
-                  <option data-cs="Mládež" data-en="Youth">Mládež</option>
-                  <option data-cs="Klub" data-en="Club">Klub</option>
-                  <option data-cs="Trénink" data-en="Training">Trénink</option>
-                  <option data-cs="Akce" data-en="Event">Akce</option>
+                <select id="art-category" class="form-control">
+                  <option value="Zápas" data-en="Match">Zápas</option>
+                  <option value="Mládež" data-en="Youth">Mládež</option>
+                  <option value="Klub" data-en="Club">Klub</option>
+                  <option value="Trénink" data-en="Training">Trénink</option>
+                  <option value="Akce" data-en="Event">Akce</option>
                 </select>
               </div>
               <div class="form-group">
@@ -561,15 +561,15 @@
               </div>
               <div class="form-group">
                 <label class="form-label" data-cs="Datum publikace" data-en="Publication date">Datum publikace</label>
-                <input type="date" class="form-control" value="2025-04-17">
+                <input type="date" id="art-date" class="form-control" value="2025-04-17">
               </div>
               <div class="form-group">
                 <label class="form-label" style="display:flex;align-items:center;gap:8px;cursor:pointer;">
-                  <input type="checkbox" style="accent-color:var(--teal);">
+                  <input type="checkbox" id="art-featured" style="accent-color:var(--teal);">
                   <span data-cs="Zobrazit jako featured (hlavní)" data-en="Show as featured (main)">Zobrazit jako featured (hlavní)</span>
                 </label>
               </div>
-              <button class="btn btn-primary" style="width:100%;" onclick="showToast()" data-cs="Publikovat článek" data-en="Publish article">Publikovat článek</button>
+              <button class="btn btn-primary" style="width:100%;" onclick="publishArticle()" data-cs="Publikovat článek" data-en="Publish article">Publikovat článek</button>
               <button class="btn btn-outline" style="width:100%;margin-top:10px;" data-cs="Uložit jako koncept" data-en="Save as draft">Uložit jako koncept</button>
             </div>
             <div class="admin-form-card">

@@ -1,0 +1,41 @@
+# Laravel
+/vendor/
+/node_modules/
+/public/hot
+/public/storage
+/storage/*.key
+/.env
+/.env.backup
+/.env.production
+/.phpunit.result.cache
+/Homestead.json
+/Homestead.yaml
+/auth.json
+/npm-debug.log
+/yarn-error.log
+/.vagrant
+
+# Laravel compiled assets
+/public/build/
+/public/js/app.js
+/public/css/app.css
+
+# PHP
+*.phar
+*.log
+*.cache
+
+# Composer
+composer.phar
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Tests
+/coverage/
+.phpunit.cache/

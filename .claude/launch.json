@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Static HTML (Python)",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8080", "--directory", "C:/Users/MSI/Documents/GitRepos/_personal_/hc_ricany"],
+      "port": 8080
+    }
+  ]
+}

@@ -2,10 +2,11 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "Static HTML (Python)",
-      "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8080", "--directory", "C:/Users/MSI/Documents/GitRepos/_personal_/hc_ricany"],
-      "port": 8080
+      "name": "Laravel Dev Server",
+      "runtimeExecutable": "php",
+      "runtimeArgs": ["artisan", "serve", "--port=8000"],
+      "cwd": "C:/Users/MSI/Documents/GitRepos/_personal_/hc_ricany",
+      "port": 8000
     }
   ]
 }

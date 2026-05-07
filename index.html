@@ -116,28 +116,28 @@
     </div>
 
     <div class="news-grid" id="news-grid">
-      <div class="news-card featured">
+      <div class="news-card featured" data-id="1">
         <div class="news-date" data-cs="15. dubna 2025 · Zápas" data-en="April 15, 2025 · Match">15. dubna 2025 · Zápas</div>
         <h3 data-cs="Vítězné tažení pokračuje — tři výhry v řadě!" data-en="Winning streak continues — three wins in a row!">Vítězné tažení pokračuje — tři výhry v řadě!</h3>
         <p data-cs="Naši muži podali skvělý výkon v posledním kole. Výsledek 5:2 potvrdil dobrou formu celého týmu a přiblížil nás play-off. Gratulujeme klukům za skvělý výkon." data-en="Our men put in a brilliant performance in the last round. The 5:2 result confirmed the good form of the whole team and brought us closer to the playoffs. Congratulations to the guys for an excellent performance.">Naši muži podali skvělý výkon v posledním kole. Výsledek 5:2 potvrdil dobrou formu celého týmu a přiblížil nás play-off. Gratulujeme klukům za skvělý výkon.</p>
         <div class="news-card-arrow"><span data-cs="Číst více" data-en="Read more">Číst více</span> →</div>
       </div>
 
-      <div class="news-card">
+      <div class="news-card" data-id="2">
         <div class="news-date" data-cs="10. dubna 2025 · Mládež" data-en="April 10, 2025 · Youth">10. dubna 2025 · Mládež</div>
         <h3 data-cs="Dorost slaví postup do semifinále" data-en="Juniors celebrate semi-final promotion">Dorost slaví postup do semifinále</h3>
         <p data-cs="Naše dorostenecká kategorie se probojovala do semifinále krajského přeboru. Výborná zpráva pro celý klub!" data-en="Our junior category has fought through to the semi-final of the regional championship. Excellent news for the whole club!">Naše dorostenecká kategorie se probojovala do semifinále krajského přeboru.</p>
         <div class="news-card-arrow"><span data-cs="Číst více" data-en="Read more">Číst více</span> →</div>
       </div>
 
-      <div class="news-card">
+      <div class="news-card" data-id="3">
         <div class="news-date" data-cs="5. dubna 2025 · Klub" data-en="April 5, 2025 · Club">5. dubna 2025 · Klub</div>
         <h3 data-cs="Otevírací dny přihlášek na novou sezonu" data-en="Registration open days for new season">Otevírací dny přihlášek na novou sezonu</h3>
         <p data-cs="Přihlášky na sezonu 2025/26 jsou otevřeny pro všechny věkové kategorie od 5 let." data-en="Registrations for the 2025/26 season are open for all age categories from 5 years old.">Přihlášky na sezonu 2025/26 jsou otevřeny pro všechny věkové kategorie od 5 let.</p>
         <div class="news-card-arrow"><span data-cs="Číst více" data-en="Read more">Číst více</span> →</div>
       </div>
 
-      <div class="news-card">
+      <div class="news-card" data-id="4">
         <div class="news-date" data-cs="1. dubna 2025 · Trénink" data-en="April 1, 2025 · Training">1. dubna 2025 · Trénink</div>
         <h3 data-cs="Nový kondicionér posiluje tým" data-en="New fitness coach strengthens the team">Nový kondicionér posiluje tým</h3>
         <p data-cs="Do realizačního týmu přichází zkušený kondicionér Jan Novák, který pracoval s prvoligovými celky." data-en="Experienced fitness coach Jan Novák joins the coaching staff, having worked with top-flight clubs.">Do realizačního týmu přichází zkušený kondicionér Jan Novák.</p>
@@ -474,38 +474,38 @@
                 <th data-cs="Akce" data-en="Actions">Akce</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
+            <tbody id="admin-articles-table">
+              <tr data-id="1">
                 <td data-cs="Vítězné tažení pokračuje" data-en="Winning streak continues">Vítězné tažení pokračuje</td>
                 <td><span class="role-badge role-admin" data-cs="Zápas" data-en="Match">Zápas</span></td>
                 <td>admin</td>
                 <td>15.4.2025</td>
                 <td><span class="status-active" data-cs="● Publikováno" data-en="● Published">● Publikováno</span></td>
                 <td>
-                  <button class="action-btn" data-cs="Upravit" data-en="Edit">Upravit</button>
-                  <button class="action-btn danger" data-cs="Smazat" data-en="Delete">Smazat</button>
+                  <button class="action-btn" onclick="editArticle(1)">Upravit</button>
+                  <button class="action-btn danger" onclick="deleteArticle(1)">Smazat</button>
                 </td>
               </tr>
-              <tr>
+              <tr data-id="2">
                 <td data-cs="Dorost slaví postup do semifinále" data-en="Juniors celebrate semi-final promotion">Dorost slaví postup do semifinále</td>
                 <td><span class="role-badge role-editor" data-cs="Mládež" data-en="Youth">Mládež</span></td>
                 <td>redaktor</td>
                 <td>10.4.2025</td>
                 <td><span class="status-active" data-cs="● Publikováno" data-en="● Published">● Publikováno</span></td>
                 <td>
-                  <button class="action-btn" data-cs="Upravit" data-en="Edit">Upravit</button>
-                  <button class="action-btn danger" data-cs="Smazat" data-en="Delete">Smazat</button>
+                  <button class="action-btn" onclick="editArticle(2)">Upravit</button>
+                  <button class="action-btn danger" onclick="deleteArticle(2)">Smazat</button>
                 </td>
               </tr>
-              <tr>
+              <tr data-id="3">
                 <td data-cs="Přihlášky na novou sezonu" data-en="Registrations for new season">Přihlášky na novou sezonu</td>
                 <td><span class="role-badge role-viewer" data-cs="Klub" data-en="Club">Klub</span></td>
                 <td>admin</td>
                 <td>5.4.2025</td>
                 <td><span class="status-inactive" data-cs="○ Koncept" data-en="○ Draft">○ Koncept</span></td>
                 <td>
-                  <button class="action-btn" data-cs="Upravit" data-en="Edit">Upravit</button>
-                  <button class="action-btn danger" data-cs="Smazat" data-en="Delete">Smazat</button>
+                  <button class="action-btn" onclick="editArticle(3)">Upravit</button>
+                  <button class="action-btn danger" onclick="deleteArticle(3)">Smazat</button>
                 </td>
               </tr>
             </tbody>
@@ -569,8 +569,9 @@
                   <span data-cs="Zobrazit jako featured (hlavní)" data-en="Show as featured (main)">Zobrazit jako featured (hlavní)</span>
                 </label>
               </div>
-              <button class="btn btn-primary" style="width:100%;" onclick="publishArticle()" data-cs="Publikovat článek" data-en="Publish article">Publikovat článek</button>
-              <button class="btn btn-outline" style="width:100%;margin-top:10px;" data-cs="Uložit jako koncept" data-en="Save as draft">Uložit jako koncept</button>
+              <input type="hidden" id="art-editing-id" value="">
+              <button id="art-publish-btn" class="btn btn-primary" style="width:100%;" onclick="publishArticle()">Publikovat článek</button>
+              <button id="art-cancel-btn" class="btn btn-outline" style="width:100%;margin-top:10px;display:none;" onclick="cancelEdit()">Zrušit úpravy</button>
             </div>
             <div class="admin-form-card">
               <div class="admin-form-section-title" data-cs="Fotografie článku" data-en="Article photo">Fotografie článku</div>
@@ -832,6 +833,6 @@ Ke Stadionu 123
   </div>
 </div>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js?v=6"></script>
 </body>
 </html>

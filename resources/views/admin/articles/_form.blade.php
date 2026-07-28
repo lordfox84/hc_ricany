@@ -24,17 +24,7 @@
   </div>
 
   <div class="admin-layout">
-    <aside class="admin-sidebar">
-      <div class="admin-sidebar-section">
-        <div class="admin-sidebar-heading">Obsah</div>
-        <a class="admin-nav-item" href="{{ route('admin.articles.index') }}">
-          <span class="icon">📝</span> Články &amp; novinky
-        </a>
-        <a class="admin-nav-item active" href="{{ route('admin.articles.create') }}">
-          <span class="icon">✏️</span> Nový článek
-        </a>
-      </div>
-    </aside>
+    @include('partials._admin_sidebar')
 
     <main class="admin-content">
       <div class="admin-panel-section active">
@@ -58,42 +48,68 @@
               <div class="admin-form-card">
                 <div class="admin-form-section-title">Obsah článku</div>
 
-                <div class="form-group">
-                  <label class="form-label">Nadpis (česky) *</label>
-                  <input type="text" name="title_cs" class="form-control" required
-                         value="{{ old('title_cs', $article->title_cs ?? '') }}"
-                         placeholder="Název článku v češtině...">
+                @php
+                  $enComplete = filled(old('excerpt_en', $article->excerpt_en ?? null))
+                             && filled(old('body_en', $article->body_en ?? null));
+                @endphp
+
+                <div class="lang-tabs">
+                  <button type="button" class="lang-tab active" data-tab="cs" onclick="switchArticleTab('cs')">Čeština</button>
+                  <button type="button" class="lang-tab" data-tab="en" onclick="switchArticleTab('en')">
+                    English
+                    @unless($enComplete)
+                      <span class="lang-tab-warn" title="Perex nebo text v angličtině chybí — článek se v EN verzi nezobrazí.">⚠</span>
+                    @endunless
+                  </button>
+                  <span class="lang-tab lang-tab--disabled" title="Připravujeme">Deutsch</span>
                 </div>
 
-                <div class="form-group">
-                  <label class="form-label">Nadpis (anglicky)</label>
-                  <input type="text" name="title_en" class="form-control"
-                         value="{{ old('title_en', $article->title_en ?? '') }}"
-                         placeholder="Article title in English...">
+                @unless($enComplete)
+                  <p class="lang-tab-hint">
+                    Bez vyplněného anglického perexu a textu se článek v anglické verzi webu nezobrazí (v CZ verzi zůstane beze změny).
+                  </p>
+                @endunless
+
+                <div class="lang-tab-panel" data-panel="cs">
+                  <div class="form-group">
+                    <label class="form-label">Nadpis (česky) *</label>
+                    <input type="text" name="title_cs" class="form-control" required
+                           value="{{ old('title_cs', $article->title_cs ?? '') }}"
+                           placeholder="Název článku v češtině...">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Perex – česky (krátký popis)</label>
+                    <textarea name="excerpt_cs" class="form-control" style="min-height:80px;"
+                              placeholder="Krátký popis článku...">{{ old('excerpt_cs', $article->excerpt_cs ?? '') }}</textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Text článku – česky</label>
+                    <textarea name="body_cs" class="form-control" style="min-height:160px;"
+                              placeholder="Plný text článku v češtině...">{{ old('body_cs', $article->body_cs ?? '') }}</textarea>
+                  </div>
                 </div>
 
-                <div class="form-group">
-                  <label class="form-label">Perex – česky (krátký popis)</label>
-                  <textarea name="excerpt_cs" class="form-control" style="min-height:80px;"
-                            placeholder="Krátký popis článku...">{{ old('excerpt_cs', $article->excerpt_cs ?? '') }}</textarea>
-                </div>
+                <div class="lang-tab-panel" data-panel="en" style="display:none;">
+                  <div class="form-group">
+                    <label class="form-label">Nadpis (anglicky)</label>
+                    <input type="text" name="title_en" class="form-control"
+                           value="{{ old('title_en', $article->title_en ?? '') }}"
+                           placeholder="Article title in English...">
+                  </div>
 
-                <div class="form-group">
-                  <label class="form-label">Perex – anglicky</label>
-                  <textarea name="excerpt_en" class="form-control" style="min-height:80px;"
-                            placeholder="Short article description...">{{ old('excerpt_en', $article->excerpt_en ?? '') }}</textarea>
-                </div>
+                  <div class="form-group">
+                    <label class="form-label">Perex – anglicky</label>
+                    <textarea name="excerpt_en" class="form-control" style="min-height:80px;"
+                              placeholder="Short article description...">{{ old('excerpt_en', $article->excerpt_en ?? '') }}</textarea>
+                  </div>
 
-                <div class="form-group">
-                  <label class="form-label">Text článku – česky</label>
-                  <textarea name="body_cs" class="form-control" style="min-height:160px;"
-                            placeholder="Plný text článku v češtině...">{{ old('body_cs', $article->body_cs ?? '') }}</textarea>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label">Text článku – anglicky</label>
-                  <textarea name="body_en" class="form-control" style="min-height:160px;"
-                            placeholder="Full article text in English...">{{ old('body_en', $article->body_en ?? '') }}</textarea>
+                  <div class="form-group">
+                    <label class="form-label">Text článku – anglicky</label>
+                    <textarea name="body_en" class="form-control" style="min-height:160px;"
+                              placeholder="Full article text in English...">{{ old('body_en', $article->body_en ?? '') }}</textarea>
+                  </div>
                 </div>
               </div>
             </div>
@@ -103,21 +119,19 @@
                 <div class="admin-form-section-title">Nastavení publikace</div>
 
                 <div class="form-group">
-                  <label class="form-label">Kategorie (česky) *</label>
-                  <select name="category_cs" class="form-control">
-                    @foreach(['Zápas','Mládež','Klub','Trénink','Akce','Novinky'] as $cat)
-                      <option value="{{ $cat }}" {{ old('category_cs', $article->category_cs ?? '') === $cat ? 'selected' : '' }}>
-                        {{ $cat }}
+                  <label class="form-label">Tag</label>
+                  <select name="category_id" id="categorySelect" class="form-control" onchange="updateCatPreview(this)">
+                    <option value="">— bez tagu —</option>
+                    @foreach($categories as $cat)
+                      <option value="{{ $cat->id }}"
+                              data-color="{{ $cat->color }}"
+                              data-name="{{ $cat->name_cs }}"
+                              {{ old('category_id', $article->category_id ?? '') == $cat->id ? 'selected' : '' }}>
+                        {{ $cat->name_cs }}{{ $cat->name_en ? ' / '.$cat->name_en : '' }}
                       </option>
                     @endforeach
                   </select>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label">Kategorie (anglicky)</label>
-                  <input type="text" name="category_en" class="form-control"
-                         value="{{ old('category_en', $article->category_en ?? '') }}"
-                         placeholder="Match / Youth / Club...">
+                  <div id="catPreview" style="margin-top:8px;"></div>
                 </div>
 
                 <div class="form-group">
@@ -165,4 +179,41 @@
     </main>
   </div>
 </div>
+
+<style>
+  .lang-tabs { display: flex; gap: 6px; margin-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0; }
+  .lang-tab {
+    font-family: var(--font-cond); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.03em;
+    background: transparent; border: none; border-bottom: 2px solid transparent;
+    color: var(--gray-light); padding: 8px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+  }
+  .lang-tab.active { color: var(--teal); border-bottom-color: var(--teal); }
+  .lang-tab--disabled { opacity: 0.35; cursor: not-allowed; }
+  .lang-tab-warn { color: #facc15; }
+  .lang-tab-hint { font-size: 0.8rem; color: #facc15; margin: 10px 0 16px; }
+</style>
+
+<script>
+function switchArticleTab(lang) {
+  document.querySelectorAll('.lang-tab[data-tab]').forEach(t => t.classList.toggle('active', t.dataset.tab === lang));
+  document.querySelectorAll('.lang-tab-panel').forEach(p => p.style.display = (p.dataset.panel === lang ? 'block' : 'none'));
+}
+
+function updateCatPreview(sel) {
+  var opt = sel.options[sel.selectedIndex];
+  var preview = document.getElementById('catPreview');
+  if (!opt.value) { preview.innerHTML = ''; return; }
+  var color = opt.dataset.color || '#2abfbf';
+  var name  = opt.dataset.name  || opt.text;
+  preview.innerHTML =
+    '<span style="display:inline-block;padding:3px 10px;border-radius:4px;font-size:0.78rem;font-weight:600;letter-spacing:.04em;'
+    + 'background:' + color + '1a;color:' + color + ';border:1px solid ' + color + '55;">'
+    + '#' + name + '</span>';
+}
+// Init on load
+document.addEventListener('DOMContentLoaded', function() {
+  var sel = document.getElementById('categorySelect');
+  if (sel) updateCatPreview(sel);
+});
+</script>
 @endsection

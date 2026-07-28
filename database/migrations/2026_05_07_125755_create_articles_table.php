@@ -16,8 +16,8 @@ return new class extends Migration
             $table->text('excerpt_en')->nullable();
             $table->longText('body_cs')->nullable();
             $table->longText('body_en')->nullable();
-            $table->string('category_cs')->default('Novinky');
-            $table->string('category_en')->default('News');
+            $table->string('category_cs')->nullable();
+            $table->string('category_en')->nullable();
             $table->string('image')->nullable();
             $table->boolean('is_featured')->default(false);
             $table->boolean('is_published')->default(true);

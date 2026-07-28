@@ -23,17 +23,7 @@
   </div>
 
   <div class="admin-layout">
-    <aside class="admin-sidebar">
-      <div class="admin-sidebar-section">
-        <div class="admin-sidebar-heading">Obsah</div>
-        <a class="admin-nav-item active" href="{{ route('admin.articles.index') }}">
-          <span class="icon">📝</span> Články &amp; novinky
-        </a>
-        <a class="admin-nav-item" href="{{ route('admin.articles.create') }}">
-          <span class="icon">✏️</span> Nový článek
-        </a>
-      </div>
-    </aside>
+    @include('partials._admin_sidebar')
 
     <main class="admin-content">
       <div class="admin-panel-section active">
@@ -55,7 +45,7 @@
             <thead>
               <tr>
                 <th>Název</th>
-                <th>Kategorie</th>
+                <th>Tag</th>
                 <th>Autor</th>
                 <th>Datum</th>
                 <th>Stav</th>
@@ -70,6 +60,9 @@
                   @if($article->is_featured)
                     <span style="color:var(--teal);font-size:0.75rem;margin-left:6px;">★ Featured</span>
                   @endif
+                  @unless($article->isCompleteFor('en'))
+                    <span style="color:#facc15;font-size:0.75rem;margin-left:6px;" title="Chybí anglický perex nebo text — v EN verzi se nezobrazí.">⚠ EN chybí</span>
+                  @endunless
                 </td>
                 <td><span class="role-badge role-admin">{{ $article->category_cs }}</span></td>
                 <td>{{ $article->author?->name ?? '—' }}</td>

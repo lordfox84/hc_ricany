@@ -11,6 +11,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Railway (and most PaaS hosts) terminate TLS at their edge and forward plain HTTP
+        // to the app, so Laravel must trust the X-Forwarded-* headers to know the original
+        // request was HTTPS — otherwise generated URLs/redirects fall back to http://.
+        $middleware->trustProxies(at: '*');
+
         $middleware->web(append: [
             \App\Http\Middleware\SetLocale::class,
         ]);

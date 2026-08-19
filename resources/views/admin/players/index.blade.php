@@ -88,7 +88,7 @@
                   <td><input type="checkbox" class="player-checkbox" data-id="{{ $player->id }}"></td>
                   <td class="admin-player-photo-cell">
                     @if($player->photo)
-                      <img src="{{ Storage::url($player->photo) }}" class="admin-player-photo" style="width:32px;height:32px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:8px;">
+                      <img src="{{ asset('storage/' . $player->photo) }}" class="admin-player-photo" style="width:32px;height:32px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:8px;">
                     @else
                       <span style="display:inline-block;width:32px;height:32px;border-radius:50%;background:var(--gray-mid);line-height:32px;text-align:center;font-size:0.8rem;margin-right:8px;vertical-align:middle;">?</span>
                     @endif

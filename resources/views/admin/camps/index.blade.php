@@ -51,7 +51,7 @@
                 <tr>
                   <td style="width:60px;">
                     @if($camp->poster)
-                      <img src="{{ Storage::url($camp->poster) }}" style="width:50px;height:50px;object-fit:cover;border-radius:4px;">
+                      <img src="{{ asset('storage/' . $camp->poster) }}" style="width:50px;height:50px;object-fit:cover;border-radius:4px;">
                     @else
                       <div style="width:50px;height:50px;background:var(--gray-mid);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">🏕️</div>
                     @endif

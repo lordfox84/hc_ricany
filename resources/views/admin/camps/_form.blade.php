@@ -177,7 +177,7 @@
                 <div class="admin-form-section-title">Plakát kempu</div>
                 @if($isEdit && $camp->poster)
                   <div style="margin-bottom:12px;">
-                    <img src="{{ Storage::url($camp->poster) }}" alt="Plakát" style="max-width:100%;border-radius:6px;">
+                    <img src="{{ asset('storage/' . $camp->poster) }}" alt="Plakát" style="max-width:100%;border-radius:6px;">
                   </div>
                 @endif
                 <div class="form-group">

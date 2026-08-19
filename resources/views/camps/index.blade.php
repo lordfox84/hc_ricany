@@ -93,7 +93,7 @@
           </div>
 
           @if($camp->poster)
-            <div style="background:url('{{ Storage::url($camp->poster) }}') center/cover no-repeat;min-height:280px;"></div>
+            <div style="background:url('{{ asset('storage/' . $camp->poster) }}') center/cover no-repeat;min-height:280px;"></div>
           @endif
         </div>
 

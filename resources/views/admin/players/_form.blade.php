@@ -135,7 +135,7 @@
             <div class="admin-form-section-title">Fotografie</div>
             @if($isEdit && $player->photo)
               <div style="margin-bottom:12px;">
-                <img src="{{ Storage::url($player->photo) }}" alt="Foto" style="max-width:160px;border-radius:6px;">
+                <img src="{{ asset('storage/' . $player->photo) }}" alt="Foto" style="max-width:160px;border-radius:6px;">
               </div>
             @endif
             <input type="file" name="photo" class="form-control" accept="image/*">

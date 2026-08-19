@@ -80,7 +80,7 @@
                     {{-- Foto --}}
                     <td class="roster-td-photo">
                       @if($player->photo)
-                        <img src="{{ Storage::url($player->photo) }}" alt="{{ $player->full_name }}"
+                        <img src="{{ asset('storage/' . $player->photo) }}" alt="{{ $player->full_name }}"
                              class="roster-photo" style="border-color:{{ $team->color }}40;">
                       @else
                         <div class="roster-photo-placeholder" style="border-color:{{ $team->color }}40;">

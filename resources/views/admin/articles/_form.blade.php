@@ -163,7 +163,7 @@
                 <div class="admin-form-section-title">Fotografie článku</div>
                 @if($isEdit && $article->image)
                   <div style="margin-bottom:12px;">
-                    <img src="{{ Storage::url($article->image) }}" alt="Aktuální foto" style="max-width:100%;border-radius:6px;">
+                    <img src="{{ asset('storage/' . $article->image) }}" alt="Aktuální foto" style="max-width:100%;border-radius:6px;">
                   </div>
                 @endif
                 <div class="form-group">

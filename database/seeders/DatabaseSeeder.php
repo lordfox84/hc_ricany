@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $admin = User::factory()->create([
+        $admin = User::create([
             'name'     => 'Admin HC Říčany',
             'email'    => 'admin@hcricany.cz',
             'password' => Hash::make('heslo123'),

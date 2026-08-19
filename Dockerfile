@@ -1,3 +1,10 @@
+# Vite-compiled frontend assets (public/build) are gitignored and not in the repo, but Breeze's
+# auth pages (login, register, ...) use @vite() and 500 without them — build them here.
+FROM node:20-bookworm-slim AS assets
+WORKDIR /app
+COPY . .
+RUN npm ci && npm run build
+
 FROM php:8.4-cli-bookworm
 
 # System packages + PHP extensions Laravel needs (sqlite driver, uploads, XML/zip for Composer packages)
@@ -10,6 +17,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 COPY . .
+COPY --from=assets /app/public/build ./public/build
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress
 
